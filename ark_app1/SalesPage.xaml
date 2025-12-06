@@ -1,0 +1,96 @@
+<Page
+    x:Class="ark_app1.SalesPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:controls="using:CommunityToolkit.WinUI.UI.Controls"
+    mc:Ignorable="d">
+
+    <Grid Padding="20">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <!-- Left: Product Selection -->
+        <Grid Grid.Column="0" Margin="0,0,20,0" RowDefinitions="Auto, *">
+            <StackPanel Grid.Row="0" Spacing="10" Margin="0,0,0,10">
+                <TextBlock Text="Punto de Venta" Style="{StaticResource TitleTextBlockStyle}"/>
+
+                <Grid ColumnSpacing="10">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+                    <!-- Client Search -->
+                    <AutoSuggestBox x:Name="ClientSearchBox" Header="Cliente" PlaceholderText="Buscar cliente por nombre..."
+                                    TextChanged="ClientSearchBox_TextChanged"
+                                    SuggestionChosen="ClientSearchBox_SuggestionChosen"
+                                    QuerySubmitted="ClientSearchBox_QuerySubmitted"
+                                    HorizontalAlignment="Stretch"/>
+                    <Button Content="Nuevo Cliente" Click="NewClientButton_Click" VerticalAlignment="Bottom" Grid.Column="1" Margin="0,0,0,5"/>
+                </Grid>
+                <TextBlock x:Name="SelectedClientText" Text="Cliente: Ocasional" Foreground="Gray" Margin="0,-5,0,0"/>
+
+                <TextBox x:Name="ProductSearchBox" Header="Producto" PlaceholderText="Buscar por nombre o código..." TextChanged="ProductSearchBox_TextChanged"/>
+            </StackPanel>
+
+            <controls:DataGrid x:Name="ProductsGrid" Grid.Row="1" AutoGenerateColumns="False" IsReadOnly="True" SelectionMode="Single">
+                <controls:DataGrid.Columns>
+                    <controls:DataGridTextColumn Header="Código" Binding="{Binding Codigo}"/>
+                    <controls:DataGridTextColumn Header="Producto" Binding="{Binding Nombre}" Width="*"/>
+                    <controls:DataGridTextColumn Header="Stock" Binding="{Binding Stock}"/>
+                    <controls:DataGridTextColumn Header="Precio" Binding="{Binding PrecioVenta}"/>
+                    <controls:DataGridTemplateColumn Header="Acción">
+                        <controls:DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Button Content="Agregar" Click="AddToCart_Click" Tag="{Binding}"/>
+                            </DataTemplate>
+                        </controls:DataGridTemplateColumn.CellTemplate>
+                    </controls:DataGridTemplateColumn>
+                </controls:DataGrid.Columns>
+            </controls:DataGrid>
+        </Grid>
+
+        <!-- Right: Cart & Checkout -->
+        <Grid Grid.Column="1" RowDefinitions="Auto, *, Auto" Background="{ThemeResource LayerFillColorDefaultBrush}" Padding="20" CornerRadius="8">
+            <TextBlock Text="Carrito de Compras" Style="{StaticResource SubtitleTextBlockStyle}" Margin="0,0,0,15"/>
+
+            <controls:DataGrid x:Name="CartGrid" Grid.Row="1" AutoGenerateColumns="False" IsReadOnly="False" SelectionMode="Single">
+                <controls:DataGrid.Columns>
+                    <controls:DataGridTextColumn Header="Producto" Binding="{Binding Nombre}" IsReadOnly="True" Width="*"/>
+                    <controls:DataGridTextColumn Header="Precio" Binding="{Binding PrecioUnitario}" IsReadOnly="True"/>
+                    <controls:DataGridTemplateColumn Header="Cant.">
+                        <controls:DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <NumberBox Value="{Binding Cantidad, Mode=OneWay}" Minimum="1" SpinButtonPlacementMode="Compact" Width="80" ValueChanged="CartQty_ValueChanged"/>
+                            </DataTemplate>
+                        </controls:DataGridTemplateColumn.CellTemplate>
+                    </controls:DataGridTemplateColumn>
+                    <controls:DataGridTextColumn Header="Subtotal" Binding="{Binding SubtotalDisplay}" IsReadOnly="True"/>
+                    <controls:DataGridTemplateColumn Header="X">
+                        <controls:DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Button Content="X" Click="RemoveFromCart_Click" Tag="{Binding}" Foreground="Red"/>
+                            </DataTemplate>
+                        </controls:DataGridTemplateColumn.CellTemplate>
+                    </controls:DataGridTemplateColumn>
+                </controls:DataGrid.Columns>
+            </controls:DataGrid>
+
+            <StackPanel Grid.Row="2" Spacing="10" Margin="0,10,0,0">
+                <!-- Minimal Footer -->
+                <Grid>
+                    <TextBlock Text="Total Estimado:" FontWeight="Bold" FontSize="18" VerticalAlignment="Center"/>
+                    <TextBlock x:Name="TotalText" Text="Bs. 0.00" FontWeight="Bold" FontSize="18" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+                </Grid>
+
+                <Button Content="Cobrar / Finalizar Venta" HorizontalAlignment="Stretch" Style="{StaticResource AccentButtonStyle}" FontSize="16" Height="45" Click="CheckoutButton_Click"/>
+                <Button Content="Limpiar Carrito" HorizontalAlignment="Stretch" Click="ClearCart_Click"/>
+
+                <InfoBar x:Name="CartInfoBar" IsOpen="False"/>
+            </StackPanel>
+        </Grid>
+    </Grid>
+</Page>

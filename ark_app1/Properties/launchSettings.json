@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "ark_app1 (Package)": {
+      "commandName": "MsixPackage"
+    },
+    "ark_app1 (Unpackaged)": {
+      "commandName": "Project"
+    }
+  }
+}

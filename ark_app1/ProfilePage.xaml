@@ -1,0 +1,65 @@
+<Page x:Class="ark_app1.ProfilePage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      mc:Ignorable="d">
+
+    <ScrollViewer VerticalScrollBarVisibility="Auto"
+                  HorizontalScrollBarVisibility="Disabled"
+                  Padding="32,20">
+
+        <StackPanel MaxWidth="600" Spacing="20">
+
+            <TextBlock Text="Mi Perfil"
+                       Style="{ThemeResource TitleTextBlockStyle}"
+                       FontSize="32"/>
+
+            <InfoBar x:Name="InfoBar"
+                     IsOpen="False"
+                     IsClosable="True"
+                     Margin="0,0,0,20"/>
+
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <TextBox Grid.Column="0" Header="Nombre Completo" x:Name="FullNameTextBox" Margin="0,0,8,0"/>
+                <TextBox Grid.Column="1" Header="Cédula (CI)" x:Name="CiTextBox" IsReadOnly="True" Margin="8,0,0,0"/>
+            </Grid>
+
+            <TextBox Header="Correo Electrónico" x:Name="EmailTextBox" IsReadOnly="True"/>
+            <TextBox Header="Teléfono (opcional)" x:Name="PhoneTextBox"/>
+
+            <Button Content="Guardar Cambios"
+                    Click="SaveChanges_Click"
+                    Style="{ThemeResource AccentButtonStyle}"
+                    HorizontalAlignment="Stretch"
+                    Height="44"/>
+
+            <Border BorderBrush="{ThemeResource DividerStrokeColorDefaultBrush}"
+                    BorderThickness="1"
+                    CornerRadius="8"
+                    Padding="20"
+                    Margin="0,30,0,0"
+                    Background="{ThemeResource LayerFillColorAltBrush}">
+
+                <StackPanel Spacing="16">
+                    <TextBlock Text="Cambiar Contraseña"
+                               Style="{ThemeResource SubheaderTextBlockStyle}"/>
+
+                    <PasswordBox Header="Nueva contraseña" x:Name="NewPasswordBox"/>
+                    <PasswordBox Header="Confirmar nueva contraseña" x:Name="ConfirmNewPasswordBox"/>
+
+                    <Button Content="Cambiar Contraseña"
+                            Click="ChangePassword_Click"
+                            Style="{ThemeResource AccentButtonStyle}"
+                            HorizontalAlignment="Stretch"
+                            Height="44"/>
+                </StackPanel>
+            </Border>
+        </StackPanel>
+    </ScrollViewer>
+</Page>

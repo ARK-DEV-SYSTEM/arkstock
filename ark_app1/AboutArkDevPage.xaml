@@ -1,0 +1,99 @@
+<Page x:Class="ark_app1.AboutArkDevPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      mc:Ignorable="d">
+
+    <ScrollViewer VerticalScrollBarVisibility="Auto" Padding="32,20">
+        <StackPanel MaxWidth="900" Spacing="32" HorizontalAlignment="Center">
+
+            <StackPanel HorizontalAlignment="Center" Spacing="20">
+                <Image Source="https://miro.medium.com/v2/resize:fit:640/format:webp/1*v1zSwreBom0xLn0dnA6P7Q.png"
+                       Width="320" Height="213" Stretch="Uniform"/>
+                <TextBlock Text="Acerca de ArkStock"
+                           Style="{ThemeResource TitleTextBlockStyle}"
+                           FontSize="36" HorizontalAlignment="Center"/>
+                <TextBlock Text="Innovación tecnológica de ARK DEV SYSTEM"
+                           FontSize="18" Foreground="{ThemeResource TextFillColorSecondaryBrush}"
+                           HorizontalAlignment="Center"/>
+            </StackPanel>
+
+            <TextBlock Text="Somos líderes en desarrollo de aplicaciones móviles, plataformas web y sistemas personalizados de alto rendimiento. Impulsamos tu negocio con tecnología innovadora y APIs de desarrollo propio."
+                       TextWrapping="Wrap" FontSize="16" LineHeight="26" TextAlignment="Center"/>
+
+            <TextBlock Text="Innovamos, desarrollamos y transformamos ideas con:"
+                       FontWeight="SemiBold" FontSize="17" HorizontalAlignment="Center"/>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Spacing="40">
+                <TextBlock Text="Confiabilidad" FontWeight="SemiBold" FontSize="16"/>
+                <TextBlock Text="Eficiencia" FontWeight="SemiBold" FontSize="16"/>
+                <TextBlock Text="Modernidad" FontWeight="SemiBold" FontSize="16"/>
+            </StackPanel>
+
+            <TextBlock Text="Trabajamos con personas, estudios creativos y empresas para convertir su visión en software innovador y personalizado."
+                       TextWrapping="Wrap" FontSize="16" LineHeight="26" TextAlignment="Center"/>
+
+            <Grid ColumnSpacing="40">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <StackPanel Grid.Column="0" Spacing="12">
+                    <TextBlock Text="Misión" FontWeight="Bold" FontSize="18"/>
+                    <TextBlock TextWrapping="Wrap" FontSize="15">
+                        Desarrollar soluciones tecnológicas que optimicen procesos y potencien el crecimiento de nuestros clientes con rapidez, confiabilidad y enfoque en el usuario.
+                    </TextBlock>
+                </StackPanel>
+                <StackPanel Grid.Column="1" Spacing="12">
+                    <TextBlock Text="Visión" FontWeight="Bold" FontSize="18"/>
+                    <TextBlock TextWrapping="Wrap" FontSize="15">
+                        Ser líderes globales en innovación tecnológica desde Bolivia, creando soluciones que transformen el futuro digital con creatividad y excelencia.
+                    </TextBlock>
+                </StackPanel>
+            </Grid>
+
+            <StackPanel Spacing="12">
+                <TextBlock Text="Nuestros Servicios" FontWeight="Bold" FontSize="20" HorizontalAlignment="Center"/>
+                <TextBlock Text="✔ Desarrollo de software personalizado" FontSize="15"/>
+                <TextBlock Text="✔ Mantenimiento y optimización de sistemas" FontSize="15"/>
+                <TextBlock Text="✔ Soporte técnico 24/7" FontSize="15"/>
+                <TextBlock Text="✔ Soluciones de ciberseguridad avanzadas" FontSize="15"/>
+            </StackPanel>
+
+            <StackPanel Spacing="16">
+                <TextBlock Text="Submarcas de ARK DEV" FontWeight="Bold" FontSize="20" HorizontalAlignment="Center"/>
+                <VariableSizedWrapGrid MaximumRowsOrColumns="2"
+                                       ItemHeight="40"
+                                       ItemWidth="240"
+                                       HorizontalAlignment="Center"
+                                       Orientation="Horizontal">
+                    <HyperlinkButton Content="Ark Dev System" NavigateUri="https://www.ark-dev.org/ark_dev_system" HorizontalAlignment="Center"/>
+                    <HyperlinkButton Content="Ark Dev Solutions" NavigateUri="https://www.ark-dev.org/ark_dev_solutions" HorizontalAlignment="Center"/>
+                    <HyperlinkButton Content="Ark Secure" NavigateUri="https://www.ark-dev.org/ark_secure" HorizontalAlignment="Center"/>
+                    <HyperlinkButton Content="Ark Bio" NavigateUri="https://www.ark-dev.org/ark_bio" HorizontalAlignment="Center"/>
+                </VariableSizedWrapGrid>
+            </StackPanel>
+
+            <StackPanel Spacing="12">
+                <TextBlock Text="Historia" FontWeight="Bold" FontSize="20" HorizontalAlignment="Center"/>
+                <TextBlock TextWrapping="Wrap" FontSize="15" TextAlignment="Center">
+                    Fundada en abril de 2024 en Santiago, Chile, Ark Dev surgió para redefinir la innovación tecnológica.
+                    En 2025 trasladamos nuestra sede a La Paz, Bolivia, consolidando nuestro impacto global.
+                    Desde La Paz lideramos proyectos de software a medida, mantenimiento avanzado y soporte técnico,
+                    transformando ideas en soluciones de alto impacto para startups y corporaciones internacionales.
+                </TextBlock>
+                <TextBlock Text="Creador principal: Joel Andrés"
+                           FontWeight="SemiBold" FontSize="16" HorizontalAlignment="Center" Margin="0,10,0,0"/>
+                <TextBlock Text="Revisión: 60% por IA"
+                           FontSize="14" HorizontalAlignment="Center" Foreground="Gray"/>
+            </StackPanel>
+
+            <Button Content="Contáctanos ahora"
+                    Style="{ThemeResource AccentButtonStyle}"
+                    HorizontalAlignment="Center"
+                    Padding="32,14"
+                    FontSize="17"
+                    Click="ContactButton_Click"/>
+        </StackPanel>
+    </ScrollViewer>
+</Page>

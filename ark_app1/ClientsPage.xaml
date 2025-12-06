@@ -1,0 +1,49 @@
+<Page
+    x:Class="ark_app1.ClientsPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:controls="using:CommunityToolkit.WinUI.UI.Controls"
+    mc:Ignorable="d">
+
+    <Grid Padding="20">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <StackPanel Orientation="Horizontal" Spacing="10" Margin="0,0,0,20">
+            <Button Content="🡠" Click="BackButton_Click" ToolTipService.ToolTip="Volver"/>
+            <TextBlock Text="Gestión de Clientes" Style="{StaticResource TitleTextBlockStyle}" VerticalAlignment="Center"/>
+        </StackPanel>
+
+        <StackPanel Grid.Row="1" Orientation="Horizontal" Spacing="10" Margin="0,0,0,20">
+            <TextBox x:Name="SearchBox" PlaceholderText="Buscar cliente..." Width="300" TextChanged="SearchBox_TextChanged"/>
+            <Button Content="Nuevo Cliente" Click="AddButton_Click" Style="{StaticResource AccentButtonStyle}"/>
+            <Button Content="Actualizar" Click="RefreshButton_Click"/>
+        </StackPanel>
+
+        <controls:DataGrid x:Name="ClientsGrid" Grid.Row="2" AutoGenerateColumns="False" IsReadOnly="True">
+            <controls:DataGrid.Columns>
+                <controls:DataGridTextColumn Header="Nombre" Binding="{Binding Nombre}" Width="200"/>
+                <controls:DataGridTextColumn Header="CI" Binding="{Binding CI}" Width="100"/>
+                <controls:DataGridTextColumn Header="Teléfono" Binding="{Binding Telefono}" Width="100"/>
+                <controls:DataGridTextColumn Header="Dirección" Binding="{Binding Direccion}" Width="200"/>
+                <controls:DataGridTemplateColumn Header="Acciones">
+                    <controls:DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal" Spacing="5">
+                                <Button Content="Editar" Click="EditButton_Click" Tag="{Binding}"/>
+                                <Button Content="Eliminar" Click="DeleteButton_Click" Tag="{Binding}" Background="#FFD4D4"/>
+                            </StackPanel>
+                        </DataTemplate>
+                    </controls:DataGridTemplateColumn.CellTemplate>
+                </controls:DataGridTemplateColumn>
+            </controls:DataGrid.Columns>
+        </controls:DataGrid>
+
+        <InfoBar x:Name="InfoBar" VerticalAlignment="Bottom" Margin="20"/>
+    </Grid>
+</Page>

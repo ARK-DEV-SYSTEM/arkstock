@@ -1,0 +1,47 @@
+<Page
+    x:Class="ark_app1.AddProductDialogContent"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <ScrollViewer VerticalScrollBarVisibility="Auto">
+        <StackPanel Spacing="10" Width="400" Padding="0,0,12,0">
+            <InfoBar x:Name="ResultInfoBar" IsOpen="False" Message="" Title="Atención" Severity="Warning" Margin="0,0,0,10"/>
+            <TextBox x:Name="CodigoTextBox" Header="Código" PlaceholderText="Ej: PROD001" MaxLength="50"/>
+            <TextBox x:Name="NombreTextBox" Header="Nombre" PlaceholderText="Ej: Coca Cola 3L" MaxLength="150"/>
+
+            <ComboBox x:Name="CategoriaComboBox" Header="Categoría" DisplayMemberPath="Nombre" SelectedValuePath="Id" HorizontalAlignment="Stretch"/>
+
+            <Grid ColumnSpacing="10">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <TextBox Grid.Column="0" x:Name="TallaTextBox" Header="Talla (Opcional)" MaxLength="20"/>
+                <TextBox Grid.Column="1" x:Name="ColorTextBox" Header="Color (Opcional)" MaxLength="30"/>
+            </Grid>
+
+            <Grid ColumnSpacing="10">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <NumberBox Grid.Column="0" x:Name="PrecioCompraBox" Header="Precio Compra" Minimum="0" SpinButtonPlacementMode="Compact"/>
+                <NumberBox Grid.Column="1" x:Name="PrecioVentaBox" Header="Precio Venta" Minimum="0" SpinButtonPlacementMode="Compact"/>
+            </Grid>
+
+            <Grid ColumnSpacing="10">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <NumberBox Grid.Column="0" x:Name="CantidadBox" Header="Cantidad" Minimum="1" Value="1" SpinButtonPlacementMode="Compact"/>
+                <TextBox Grid.Column="1" x:Name="UnidadTextBox" Header="Unidad Medida" Text="Unidad" MaxLength="20"/>
+            </Grid>
+
+            <NumberBox x:Name="StockMinimoBox" Header="Stock Mínimo" Minimum="0" Value="5" SpinButtonPlacementMode="Compact"/>
+        </StackPanel>
+    </ScrollViewer>
+</Page>

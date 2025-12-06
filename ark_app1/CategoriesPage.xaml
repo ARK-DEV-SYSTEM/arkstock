@@ -1,0 +1,47 @@
+<Page
+    x:Class="ark_app1.CategoriesPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:controls="using:CommunityToolkit.WinUI.UI.Controls"
+    mc:Ignorable="d">
+
+    <Grid Padding="20">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <StackPanel Orientation="Horizontal" Spacing="10" Margin="0,0,0,20">
+            <Button Content="🡠" Click="BackButton_Click" ToolTipService.ToolTip="Volver al Inventario"/>
+            <TextBlock Text="Gestión de Categorías" Style="{StaticResource TitleTextBlockStyle}" VerticalAlignment="Center"/>
+        </StackPanel>
+
+        <StackPanel Grid.Row="1" Orientation="Horizontal" Spacing="10" Margin="0,0,0,20">
+            <TextBox x:Name="SearchBox" PlaceholderText="Buscar categoría..." Width="300" TextChanged="SearchBox_TextChanged"/>
+            <Button Content="Nueva Categoría" Click="AddButton_Click" Style="{StaticResource AccentButtonStyle}"/>
+        </StackPanel>
+
+        <ListView x:Name="CatsList" Grid.Row="2" MaxWidth="500" HorizontalAlignment="Left">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <Grid Padding="10">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Text="{Binding Nombre}" VerticalAlignment="Center" FontSize="16"/>
+                        <StackPanel Grid.Column="1" Orientation="Horizontal" Spacing="5">
+                            <Button Content="Editar" Click="EditButton_Click" Tag="{Binding}" FontSize="12"/>
+                            <Button Content="✕" Click="DeleteButton_Click" Tag="{Binding}" Background="Transparent" Foreground="Red" FontSize="12"/>
+                        </StackPanel>
+                    </Grid>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
+        <InfoBar x:Name="InfoBar" VerticalAlignment="Bottom" Margin="20"/>
+    </Grid>
+</Page>
